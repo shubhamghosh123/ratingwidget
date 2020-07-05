@@ -15,7 +15,7 @@
 
         .container {
 
-            width: 200px;
+            width: 300px;
             margin: 0 auto;
             text-align: center;
             box-shadow: 5px 5px 20px grey;
@@ -53,10 +53,12 @@
                 <li>*</li>
             </ul>
             <h3>You rated <span id="ratingValue">0</span>/5</h3>
+            <button id="resetBtn">Reset Rating</button>
         </div>
         <script>
         const ratingStarArr = document.querySelectorAll("li");
         const ratingValue = document.getElementById("ratingValue");
+        const resetBtn = document.getElementById("resetBtn");
 
         for (const [index, element] of ratingStarArr.entries()) {
             element.addEventListener("click", () => {
@@ -89,6 +91,15 @@
                 }
             });
         }
+
+        resetBtn.addEventListener("click", () => {
+            const allSelected = document.getElementsByClassName("selected");
+            while (allSelected[0]) {
+                allSelected[0].classList.remove("selected");
+            }
+
+            ratingValue.innerHTML = "0";
+        });
         </script>
     </body>
 
